@@ -2,222 +2,242 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Frosted Glass Email Form</title>
+<title>Frosted Glass Email Form with Captcha</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 /* =========================== FROSTED GLASS UI (compact) =========================== */
 :root{
   --bg1:#8ec5fc;
-  --bg2:#e0c3fc;
-  --text:#555;
-  --card:rgba(255,255,255,0.70);
-  --card-border:rgba(255,255,255,0.6);
-  --accent1:#0077ff;
-  --accent2:#005fcc;
-  --muted:#777;
-  --glass:0 10px 30px rgba(0,0,0,0.12);
-  --form-bg: rgba(255,255,255,0.85);
-}
+    --bg2:#e0c3fc;
+      --text:#555;
+        --card:rgba(255,255,255,0.70);
+          --card-border:rgba(255,255,255,0.6);
+            --accent1:#0077ff;
+              --accent2:#005fcc;
+                --muted:#777;
+                  --glass:0 10px 30px rgba(0,0,0,0.12);
+                    --form-bg: rgba(255,255,255,0.85);
+                    }
 
-html[data-theme="dark"]{
-  --bg1:#1e1e2f;
-  --bg2:#2c2c45;
-  --text:#a3a8a5;
-  --card: rgba(255,255,255,0.06);
-  --card-border: rgba(255,255,255,0.04);
-  --muted:#a3a8a5;
-  --form-bg: rgba(255,255,255,0.02);
-}
+                    html[data-theme="dark"]{
+                      --bg1:#1e1e2f;
+                        --bg2:#2c2c45;
+                          --text:#a3a8a5;
+                            --card: rgba(255,255,255,0.06);
+                              --card-border: rgba(255,255,255,0.04);
+                                --muted:#a3a8a5;
+                                  --form-bg: rgba(255,255,255,0.02);
+                                  }
 
-*{ box-sizing:border-box }
+                                  *{ box-sizing:border-box }
 
-html, body{
-  height:100%;
-  margin:0;
-  font-family:Inter, system-ui, sans-serif;
-}
+                                  html, body{
+                                    height:100%;
+                                      margin:0;
+                                        font-family:Inter, system-ui, sans-serif;
+                                        }
 
-body{
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:24px;
-  color:var(--text);
-}
+                                        body{
+                                          background:linear-gradient(135deg,var(--bg1),var(--bg2));
+                                            display:flex;
+                                              justify-content:center;
+                                                align-items:center;
+                                                  padding:24px;
+                                                    color:var(--text);
+                                                    }
 
-/* ================= CARD FORM ================= */
-form{
-  width:100%;
-  max-width:420px;
-  background:var(--card);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:var(--glass);
-  border:1px solid var(--card-border);
-  backdrop-filter: blur(10px) saturate(120%);
-}
+                                                    /* ================= CARD FORM ================= */
+                                                    form{
+                                                      width:100%;
+                                                        max-width:420px;
+                                                          background:var(--card);
+                                                            border-radius:16px;
+                                                              padding:20px;
+                                                                box-shadow:var(--glass);
+                                                                  border:1px solid var(--card-border);
+                                                                    backdrop-filter: blur(10px) saturate(120%);
+                                                                    }
 
-/* ================= HEADER ================= */
-h2{
-  margin:0 0 6px 0;
-  font-weight:800;
-}
+                                                                    /* ================= HEADER ================= */
+                                                                    h2{
+                                                                      margin:0 0 6px 0;
+                                                                        font-weight:800;
+                                                                        }
 
-p{
-  margin:0 0 16px 0;
-  font-size:13px;
-  color:var(--muted);
-}
+                                                                        p{
+                                                                          margin:0 0 16px 0;
+                                                                            font-size:13px;
+                                                                              color:var(--muted);
+                                                                              }
 
-/* ================= FIELDS ================= */
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  margin-bottom:14px;
-}
+                                                                              /* ================= FIELDS ================= */
+                                                                              .field{
+                                                                                display:flex;
+                                                                                  flex-direction:column;
+                                                                                    gap:6px;
+                                                                                      margin-bottom:14px;
+                                                                                      }
 
-.field label{
-  font-size:13px;
-  color:var(--muted);
-  font-weight:600;
-}
+                                                                                      .field label{
+                                                                                        font-size:13px;
+                                                                                          color:var(--muted);
+                                                                                            font-weight:600;
+                                                                                            }
 
-.field input{
-  padding:12px 14px;
-  border-radius:12px;
-  font-size:14px;
-  border:1px solid rgba(0,0,0,0.08);
-  background:var(--form-bg);
-  color:var(--text);
-  outline:none;
-}
+                                                                                            .field input{
+                                                                                              padding:12px 14px;
+                                                                                                border-radius:12px;
+                                                                                                  font-size:14px;
+                                                                                                    border:1px solid rgba(0,0,0,0.08);
+                                                                                                      background:var(--form-bg);
+                                                                                                        color:var(--text);
+                                                                                                          outline:none;
+                                                                                                          }
 
-.field input:focus{
-  border-color:var(--accent1);
-  box-shadow:0 0 0 2px rgba(0,119,255,0.15);
-}
+                                                                                                          .field input:focus{
+                                                                                                            border-color:var(--accent1);
+                                                                                                              box-shadow:0 0 0 2px rgba(0,119,255,0.15);
+                                                                                                              }
 
-/* ================= BUTTON ================= */
-input[type="submit"]{
-  width:100%;
-  margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:800;
-  border:none;
-  cursor:pointer;
-  background:linear-gradient(180deg,var(--accent1),var(--accent2));
-  color:white;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
+                                                                                                              /* ================= BUTTON ================= */
+                                                                                                              input[type="submit"]{
+                                                                                                                width:100%;
+                                                                                                                  margin-top:10px;
+                                                                                                                    padding:12px;
+                                                                                                                      border-radius:12px;
+                                                                                                                        font-size:15px;
+                                                                                                                          font-weight:800;
+                                                                                                                            border:none;
+                                                                                                                              cursor:pointer;
+                                                                                                                                background:linear-gradient(180deg,var(--accent1),var(--accent2));
+                                                                                                                                  color:white;
+                                                                                                                                    transition:transform .15s ease, box-shadow .15s ease;
+                                                                                                                                    }
 
-input[type="submit"]:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(0,0,0,0.15);
-}
+                                                                                                                                    input[type="submit"]:hover{
+                                                                                                                                      transform:translateY(-2px);
+                                                                                                                                        box-shadow:0 6px 18px rgba(0,0,0,0.15);
+                                                                                                                                        }
 
-input[type="submit"]:active{
-  transform:translateY(0);
-}
+                                                                                                                                        input[type="submit"]:active{
+                                                                                                                                          transform:translateY(0);
+                                                                                                                                          }
 
-/* ================= MOBILE ================= */
-@media (max-width:480px){
-  form{
-    padding:16px;
-  }
-}
-</style>
-</head>
+                                                                                                                                          /* ================= MOBILE ================= */
+                                                                                                                                          @media (max-width:480px){
+                                                                                                                                            form{
+                                                                                                                                                padding:16px;
+                                                                                                                                                  }
+                                                                                                                                                  }
+                                                                                                                                                  </style>
 
-<body>
+                                                                                                                                                  <!-- Google reCAPTCHA v2 -->
+                                                                                                                                                  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<form id="form">
-  <h2>Send Email</h2>
-  <p>Frosted glass EmailJS form</p>
+                                                                                                                                                  </head>
 
-  <div class="field">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" required>
-  </div>
+                                                                                                                                                  <body>
 
-  <div class="field">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
-  </div>
+                                                                                                                                                  <form id="form">
+                                                                                                                                                    <h2>Send Email</h2>
+                                                                                                                                                      <p>Frosted glass EmailJS form with Captcha</p>
 
-  <!-- Hidden auto-generated time -->
-  <input type="hidden" name="time" id="time">
+                                                                                                                                                        <div class="field">
+                                                                                                                                                            <label for="title">Title*</label>
+                                                                                                                                                                <input type="text" name="title" id="title" required>
+                                                                                                                                                                  </div>
 
-  <div class="field">
-    <label for="message">Message</label>
-    <input type="text" name="message" id="message" required>
-  </div>
+                                                                                                                                                                    <div class="field">
+                                                                                                                                                                        <label for="name">Name</label>
+                                                                                                                                                                            <input type="text" name="name" id="name">
+                                                                                                                                                                              </div>
 
-  <div class="field">
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" required>
-  </div>
+                                                                                                                                                                                <!-- Hidden auto-generated time -->
+                                                                                                                                                                                  <input type="hidden" name="time" id="time">
 
-  <input type="submit" id="button" value="Send Email">
-</form>
+                                                                                                                                                                                    <div class="field">
+                                                                                                                                                                                        <label for="message">Message*</label>
+                                                                                                                                                                                            <input type="text" name="message" id="message" required>
+                                                                                                                                                                                              </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  emailjs.init('B_0j6Y68xHGMOWxqe');
+                                                                                                                                                                                                <div class="field">
+                                                                                                                                                                                                    <label for="email">Email*</label>
+                                                                                                                                                                                                        <input type="email" name="email" id="email" required>
+                                                                                                                                                                                                          </div>
 
-  const btn = document.getElementById('button');
+                                                                                                                                                                                                            <!-- reCAPTCHA widget -->
+                                                                                                                                                                                                              <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
 
-  // Function to get current time in yy/mm/dd hh:mm:ss format
-  function getCurrentTime() {
-    const now = new Date();
-    const yy = String(now.getFullYear()).slice(-2);
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    const hh = String(now.getHours()).padStart(2, '0');
-    const min = String(now.getMinutes()).padStart(2, '0');
-    const ss = String(now.getSeconds()).padStart(2, '0');
-    return `${yy}/${mm}/${dd} ${hh}:${min}:${ss}`;
-  }
+                                                                                                                                                                                                                <input type="submit" id="button" value="Send Email">
+                                                                                                                                                                                                                </form>
 
-  // Function to get ?return=[url] from query parameters
-  function getReturnUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('return');
-  }
+                                                                                                                                                                                                                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+                                                                                                                                                                                                                <script>
+                                                                                                                                                                                                                  emailjs.init('B_0j6Y68xHGMOWxqe');
 
-  document.getElementById('form').addEventListener('submit', function(event) {
-    event.preventDefault();
+                                                                                                                                                                                                                    const btn = document.getElementById('button');
 
-    // Set hidden time field
-    document.getElementById('time').value = getCurrentTime();
+                                                                                                                                                                                                                      function getCurrentTime() {
+                                                                                                                                                                                                                          const now = new Date();
+                                                                                                                                                                                                                              const yy = String(now.getFullYear()).slice(-2);
+                                                                                                                                                                                                                                  const mm = String(now.getMonth() + 1).padStart(2, '0');
+                                                                                                                                                                                                                                      const dd = String(now.getDate()).padStart(2, '0');
+                                                                                                                                                                                                                                          const hh = String(now.getHours()).padStart(2, '0');
+                                                                                                                                                                                                                                              const min = String(now.getMinutes()).padStart(2, '0');
+                                                                                                                                                                                                                                                  const ss = String(now.getSeconds()).padStart(2, '0');
+                                                                                                                                                                                                                                                      return `${yy}/${mm}/${dd} ${hh}:${min}:${ss}`;
+                                                                                                                                                                                                                                                        }
 
-    btn.value = 'Sending...';
+                                                                                                                                                                                                                                                          function getReturnUrl() {
+                                                                                                                                                                                                                                                              const params = new URLSearchParams(window.location.search);
+                                                                                                                                                                                                                                                                  return params.get('return');
+                                                                                                                                                                                                                                                                    }
 
-    const serviceID = 'default_service';
-    const templateID = 'template_iqh8z6n';
+                                                                                                                                                                                                                                                                      document.getElementById('form').addEventListener('submit', function(event) {
+                                                                                                                                                                                                                                                                          event.preventDefault();
 
-    emailjs.sendForm(serviceID, templateID, this)
-      .then(() => {
-        btn.value = 'Send Email';
-        alert('Email sent successfully!');
+                                                                                                                                                                                                                                                                              // Check reCAPTCHA
+                                                                                                                                                                                                                                                                                  const recaptcha = grecaptcha.getResponse();
+                                                                                                                                                                                                                                                                                      if (!recaptcha) {
+                                                                                                                                                                                                                                                                                            alert("Please verify you are not a robot.");
+                                                                                                                                                                                                                                                                                                  return;
+                                                                                                                                                                                                                                                                                                      }
 
-        // Redirect if ?return=URL exists
-        const returnUrl = getReturnUrl();
-        if (returnUrl) {
-          window.location.href = decodeURIComponent(returnUrl);
-        } else {
-          this.reset();
-        }
-      }, (err) => {
-        btn.value = 'Send Email';
-        alert('Error: ' + JSON.stringify(err));
-      });
-  });
-</script>
+                                                                                                                                                                                                                                                                                                          // Auto-set name if blank
+                                                                                                                                                                                                                                                                                                              const nameInput = document.getElementById('name');
+                                                                                                                                                                                                                                                                                                                  if (nameInput.value.trim() === '') {
+                                                                                                                                                                                                                                                                                                                        nameInput.value = "Anonymous";
+                                                                                                                                                                                                                                                                                                                            }
 
-</body>
-</html>
+                                                                                                                                                                                                                                                                                                                                // Set hidden time field
+                                                                                                                                                                                                                                                                                                                                    document.getElementById('time').value = getCurrentTime();
+
+                                                                                                                                                                                                                                                                                                                                        btn.value = 'Sending...';
+
+                                                                                                                                                                                                                                                                                                                                            const serviceID = 'default_service';
+                                                                                                                                                                                                                                                                                                                                                const templateID = 'template_iqh8z6n';
+
+                                                                                                                                                                                                                                                                                                                                                    emailjs.sendForm(serviceID, templateID, this)
+                                                                                                                                                                                                                                                                                                                                                          .then(() => {
+                                                                                                                                                                                                                                                                                                                                                                  btn.value = 'Send Email';
+                                                                                                                                                                                                                                                                                                                                                                          alert('Email sent successfully!');
+
+                                                                                                                                                                                                                                                                                                                                                                                  // Redirect if ?return=URL exists
+                                                                                                                                                                                                                                                                                                                                                                                          const returnUrl = getReturnUrl();
+                                                                                                                                                                                                                                                                                                                                                                                                  if (returnUrl) {
+                                                                                                                                                                                                                                                                                                                                                                                                            window.location.href = decodeURIComponent(returnUrl);
+                                                                                                                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                                                                              this.reset();
+                                                                                                                                                                                                                                                                                                                                                                                                                                        grecaptcha.reset(); // reset captcha
+                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      }, (err) => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              btn.value = 'Send Email';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      alert('Error: ' + JSON.stringify(err));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </script>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
