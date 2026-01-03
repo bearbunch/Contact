@@ -78,7 +78,7 @@
 
   <script>
     // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("B_0j6Y68xHGMOWxqe");
 
     const form = document.getElementById("contact-form");
     const status = document.getElementById("status");
@@ -87,8 +87,8 @@
       e.preventDefault();
 
       emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_i70peip",
+        "template_iqh8z6n",
         this
       ).then(() => {
         status.textContent = "Message sent successfully!";
