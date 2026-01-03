@@ -123,6 +123,13 @@ input[type="submit"]:hover{
 input[type="submit"]:active{
   transform:translateY(0);
 }
+
+/* ================= MOBILE ================= */
+@media (max-width:480px){
+  form{
+    padding:16px;
+  }
+}
 </style>
 </head>
 
@@ -142,10 +149,8 @@ input[type="submit"]:active{
     <input type="text" name="name" id="name" required>
   </div>
 
-  <div class="field">
-    <label for="time">Time</label>
-    <input type="text" name="time" id="time">
-  </div>
+  <!-- Hidden auto-generated time -->
+  <input type="hidden" name="time" id="time">
 
   <div class="field">
     <label for="message">Message</label>
@@ -166,8 +171,23 @@ input[type="submit"]:active{
 
   const btn = document.getElementById('button');
 
+  function getCurrentTime() {
+    const now = new Date();
+    const yy = String(now.getFullYear()).slice(-2);
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    const hh = String(now.getHours()).padStart(2, '0');
+    const min = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    return `${yy}/${mm}/${dd} ${hh}:${min}:${ss}`;
+  }
+
   document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
+
+    // Set hidden time field
+    document.getElementById('time').value = getCurrentTime();
+
     btn.value = 'Sending...';
 
     const serviceID = 'default_service';
