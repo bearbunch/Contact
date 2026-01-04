@@ -5,6 +5,9 @@
 <title>Contact Me</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="image.png">
+
 <style>
 /* =========================== FROSTED GLASS UI =========================== */
 :root{
@@ -18,6 +21,16 @@
   --muted:#777;
   --glass:0 10px 30px rgba(0,0,0,0.12);
   --form-bg: rgba(255,255,255,0.85);
+}
+
+html[data-theme="dark"]{
+  --bg1:#1e1e2f;
+  --bg2:#2c2c45;
+  --text:#a3a8a5;
+  --card: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.04);
+  --muted:#a3a8a5;
+  --form-bg: rgba(255,255,255,0.02);
 }
 
 *{ box-sizing:border-box }
@@ -50,9 +63,27 @@ form{
 }
 
 /* ================= HEADER ================= */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+
 h2{
-  margin:0 0 16px;
+  margin:0;
   font-weight:800;
+}
+
+/* ================= TOGGLE ================= */
+.theme-toggle{
+  border:none;
+  background:rgba(255,255,255,0.15);
+  color:var(--text);
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+  font-size:16px;
 }
 
 /* ================= FIELDS ================= */
@@ -84,13 +115,11 @@ input:focus{
   box-shadow:0 0 0 2px rgba(0,119,255,0.15);
 }
 
-/* ================= CAPTCHA FIX ================= */
+/* ================= CAPTCHA ================= */
 .captcha-wrapper{
   display:flex;
   justify-content:center;
-  align-items:center;
   margin:14px 0;
-  overflow:hidden;
 }
 
 .captcha-wrapper .g-recaptcha{
@@ -130,7 +159,10 @@ input[type="submit"]:hover{
 <body>
 
 <form id="form">
-  <h2>Contact Me</h2>
+  <div class="header">
+    <h2>Contact Me</h2>
+    <button type="button" class="theme-toggle" id="toggle">🌙</button>
+  </div>
 
   <div class="field">
     <label>Title *</label>
@@ -154,11 +186,9 @@ input[type="submit"]:hover{
     <input type="email" name="email" required>
   </div>
 
-  <!-- CAPTCHA -->
   <div class="captcha-wrapper">
     <div class="g-recaptcha"
-         data-sitekey="6LcoWj8sAAAAAF6FZF0sDjvxWtRVtyyzXDMmwq7P">
-    </div>
+         data-sitekey="6LcoWj8sAAAAAF6FZF0sDjvxWtRVtyyzXDMmwq7P"></div>
   </div>
 
   <input type="submit" id="button" value="Send Email">
@@ -168,8 +198,15 @@ input[type="submit"]:hover{
 <script>
 emailjs.init('B_0j6Y68xHGMOWxqe');
 
-const btn = document.getElementById('button');
+/* ===== Theme Toggle ===== */
+const toggle = document.getElementById('toggle');
+toggle.onclick = () => {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  toggle.textContent = html.dataset.theme === 'dark' ? '☀️' : '🌙';
+};
 
+/* ===== Helpers ===== */
 function timestamp(){
   const d = new Date();
   return `${String(d.getFullYear()).slice(-2)}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ` +
@@ -177,37 +214,28 @@ function timestamp(){
 }
 
 function getReturnUrl(){
-  return new URLSearchParams(window.location.search).get('return');
+  return new URLSearchParams(location.search).get('return');
 }
 
+/* ===== Submit ===== */
 document.getElementById('form').addEventListener('submit',function(e){
   e.preventDefault();
 
-  if(!grecaptcha.getResponse()){
-    alert('Please complete the captcha.');
-    return;
-  }
+  if(!grecaptcha.getResponse()) return;
 
   const name = document.getElementById('name');
   if(!name.value.trim()) name.value = 'Anonymous';
 
   document.getElementById('time').value = timestamp();
-  btn.value = 'Sending...';
 
   emailjs.sendForm('default_service','template_iqh8z6n',this)
     .then(()=>{
       const r = getReturnUrl();
       if(r) location.href = decodeURIComponent(r);
       else{
-        alert('Email sent!');
         this.reset();
         grecaptcha.reset();
       }
-      btn.value='Send Email';
-    })
-    .catch(err=>{
-      btn.value='Send Email';
-      alert('Error: '+JSON.stringify(err));
     });
 });
 </script>
